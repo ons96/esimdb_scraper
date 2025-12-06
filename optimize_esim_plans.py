@@ -58,10 +58,20 @@ def load_overrides_config():
         try:
             with open(OVERRIDES_FILE, "r") as f:
                 data = json.load(f)
-                return data.get("plan_overrides", []), data.get("default_hassle_penalty", DEFAULT_HASSLE_PENALTY)
+                return {
+                    "plan_overrides": data.get("plan_overrides", []),
+                    "provider_promo_overrides": data.get("provider_promo_overrides", {}),
+                    "default_promo_type": data.get("default_promo_type", "unlimited"),
+                    "hassle_penalty": data.get("default_hassle_penalty", DEFAULT_HASSLE_PENALTY),
+                }
         except:
             pass
-    return [], DEFAULT_HASSLE_PENALTY
+    return {
+        "plan_overrides": [],
+        "provider_promo_overrides": {},
+        "default_promo_type": "unlimited",
+        "hassle_penalty": DEFAULT_HASSLE_PENALTY,
+    }
 
 def apply_overrides(plan, overrides):
     """Apply any matching overrides to a plan"""
@@ -168,10 +178,19 @@ def evaluate_combination(combo_data):
         regular_price = p.get("usd_price") or 0
         plan_hassle = p.get("hassle_penalty_per_account", hassle_penalty)
         
-        # Determine if this plan can use promo (one per provider)
+        # Determine if this plan can use promo
+        # Only track promo usage for "one-time" providers, unlimited providers can always use promo
         has_promo = promo_price is not None and promo_price < regular_price
-        promo_already_used = provider_id in provider_promo_used
-        can_use_promo = has_promo and not promo_already_used
+        provider_promo_type = p.get("provider_promo_type", "unlimited")
+        
+        if provider_promo_type == "one-time":
+            # One-time promo: only first plan from this provider gets promo
+            promo_already_used = provider_id in provider_promo_used
+            can_use_promo = has_promo and not promo_already_used
+        else:
+            # Unlimited promo: all plans can use promo
+            promo_already_used = False
+            can_use_promo = has_promo
         
         # Calculate actual price for this plan
         if regular_price == 0 and (promo_price is None or promo_price == 0):
@@ -183,10 +202,14 @@ def evaluate_combination(combo_data):
             plan_display_cost = 0
             used_promo = False
         elif can_use_promo:
-            # First plan from this provider with promo
-            # Promo applies to first purchase only, rest at regular
-            plan_display_cost = promo_price + regular_price * (qty - 1)
-            provider_promo_used.add(provider_id)
+            # Eligible for promo price
+            if provider_promo_type == "one-time":
+                # Promo applies to first purchase only, rest at regular
+                plan_display_cost = promo_price + regular_price * (qty - 1)
+                provider_promo_used.add(provider_id)
+            else:
+                # Unlimited promo - all purchases at promo price
+                plan_display_cost = promo_price * qty
             used_promo = True
             if new_user_only:
                 accounts_needed = qty
@@ -290,9 +313,17 @@ def main():
     print(f"Showing top {TOP_N_SOLUTIONS} solutions")
     
     # Load config
-    overrides, hassle_penalty = load_overrides_config()
+    config = load_overrides_config()
+    overrides = config["plan_overrides"]
+    provider_promo_overrides = config["provider_promo_overrides"]
+    default_promo_type = config["default_promo_type"]
+    hassle_penalty = config["hassle_penalty"]
+    
     print(f"Hassle penalty: ${hassle_penalty:.2f}/extra account (affects ranking only)")
-    print(f"Note: Promos assumed one-time per provider")
+    one_time_providers = [v.get("name", k) for k, v in provider_promo_overrides.items() if v.get("promo_type") == "one-time"]
+    if one_time_providers:
+        print(f"One-time promo providers: {', '.join(one_time_providers)}")
+    print(f"Default promo type: {default_promo_type}")
     
     # Load data
     file_to_load = INPUT_FILE
@@ -313,6 +344,14 @@ def main():
     # Convert to dict and apply overrides
     plans_list = df.to_dict('records')
     plans_list = [apply_overrides(p, overrides) for p in plans_list]
+    
+    # Apply provider promo type to each plan
+    for p in plans_list:
+        provider_id = p.get("provider_id", "")
+        if provider_id in provider_promo_overrides:
+            p["provider_promo_type"] = provider_promo_overrides[provider_id].get("promo_type", default_promo_type)
+        else:
+            p["provider_promo_type"] = default_promo_type
     
     # Filter valid plans
     valid_plans = [

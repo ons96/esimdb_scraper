@@ -12,6 +12,19 @@
             "note": "Requires phone number for new account. IMEI/EID may be flagged."
         }
     ],
+    "provider_promo_overrides": {
+        "65fd5b85efc7ee1e3444055a": {
+            "promo_type": "one-time",
+            "name": "MicroEsim",
+            "note": "$1 off, one time use per account"
+        },
+        "5d16f93191d4f93192b3349c": {
+            "promo_type": "one-time",
+            "name": "RedteaGO",
+            "note": "5% off, one time use"
+        }
+    },
+    "default_promo_type": "unlimited",
     "default_hassle_penalty": 0.50,
-    "comment": "hassle_penalty_per_account adds cost for each new account needed (to account for inconvenience)"
+    "comment": "provider_promo_overrides: Set promo_type to 'one-time' for providers with single-use promo codes"
 }

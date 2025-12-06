@@ -1,0 +1,160 @@
+================================================================================
+ESIM OPTIMIZER - PRODUCTION
+================================================================================
+Trip: 15 days | 8.6 GB needed
+Limits: max 3 activations, max 15 top-ups
+Showing top 10 solutions
+Hassle penalty: $0.50/extra account (affects ranking only)
+One-time promo providers: MicroEsim, RedteaGO
+Default promo type: unlimited
+Loaded plans: 4361
+Loaded 1 plan overrides
+Search space: 55 plans (5 free)
+
+Evaluating 112,640 combinations...
+
+Checking combinations:   0%|          | 0/112640 [00:00<?, ?combo/s]
+Checking combinations:   8%|Γûè         | 8653/112640 [00:00<00:01, 86520.59combo/s]
+Checking combinations:  15%|ΓûêΓûî        | 17306/112640 [00:00<00:01, 78590.45combo/s]
+Checking combinations:  22%|ΓûêΓûêΓûÅ       | 25213/112640 [00:00<00:01, 63445.71combo/s]
+Checking combinations:  28%|ΓûêΓûêΓûè       | 31826/112640 [00:00<00:01, 61542.23combo/s]
+Checking combinations:  35%|ΓûêΓûêΓûêΓûì      | 39378/112640 [00:00<00:01, 65906.27combo/s]
+Checking combinations:  41%|ΓûêΓûêΓûêΓûê      | 46129/112640 [00:00<00:01, 61334.26combo/s]
+Checking combinations:  48%|ΓûêΓûêΓûêΓûêΓûè     | 54563/112640 [00:00<00:00, 67989.33combo/s]
+Checking combinations:  56%|ΓûêΓûêΓûêΓûêΓûêΓûî    | 63169/112640 [00:00<00:00, 73272.13combo/s]
+Checking combinations:  63%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûÄ   | 70663/112640 [00:01<00:00, 72343.93combo/s]
+Checking combinations:  72%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûÅ  | 80700/112640 [00:01<00:00, 80532.99combo/s]
+Checking combinations:  79%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûë  | 89194/112640 [00:01<00:00, 81829.06combo/s]
+Checking combinations:  87%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûï | 98534/112640 [00:01<00:00, 85254.23combo/s]
+Checking combinations:  95%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûî| 107133/112640 [00:01<00:00, 84104.10combo/s]
+Checking combinations: 100%|ΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûêΓûê| 112640/112640 [00:01<00:00, 75784.82combo/s]
+
+================================================================================
+TOP 10 SOLUTIONS
+================================================================================
+SOLUTION #1
+----------------------------------------
+COST: $5.23 USD / $7.17 CAD [1 FREE]
+DATA: 8.8GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó MicroEsim: Europe 33 Countries 3 Days / Total 3GB
+    $1.26 USD [PROMO] | 2.9GB | 3 days
+  ΓÇó MicroEsim: Europe 33 Countries 7 Days / Total 5GB
+    $3.97 USD | 4.9GB | 7 days
+    ΓÜá∩╕Å Promo already used for this provider - paying full price
+
+SOLUTION #2
+----------------------------------------
+COST: $5.40 USD / $7.40 CAD [1 FREE]
+DATA: 8.8GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó MicroEsim: Europe 33 Countries 5 Days / Total 3GB
+    $1.43 USD [PROMO] | 2.9GB | 5 days
+  ΓÇó MicroEsim: Europe 33 Countries 7 Days / Total 5GB
+    $3.97 USD | 4.9GB | 7 days
+    ΓÜá∩╕Å Promo already used for this provider - paying full price
+
+SOLUTION #3
+----------------------------------------
+COST: $5.41 USD / $7.41 CAD [1 FREE]
+DATA: 8.8GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó MicroEsim: Europe 33 Countries 10 Days / Total 5GB
+    $3.15 USD [PROMO] | 4.9GB | 10 days
+  ΓÇó MicroEsim: Europe 33 Countries 3 Days / Total 3GB
+    $2.26 USD | 2.9GB | 3 days
+    ΓÜá∩╕Å Promo already used for this provider - paying full price
+
+SOLUTION #4
+----------------------------------------
+COST: $5.58 USD / $7.64 CAD [1 FREE]
+DATA: 8.8GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó MicroEsim: Europe 33 Countries 5 Days / Total 3GB
+    $1.43 USD [PROMO] | 2.9GB | 5 days
+  ΓÇó MicroEsim: Europe 33 Countries 10 Days / Total 5GB
+    $4.15 USD | 4.9GB | 10 days
+    ΓÜá∩╕Å Promo already used for this provider - paying full price
+
+SOLUTION #5
+----------------------------------------
+COST: $5.60 USD / $7.67 CAD [1 FREE]
+DATA: 8.8GB | DAYS: 30 | ACTIVATIONS: 3 | TOP-UPS: 1 | 3 accounts
+PLANS:
+  ΓÇó GigSky: Europe
+    FREE (x2) [top-up OK] | 500MB | 7 days
+  ΓÇó MicroEsim: Europe Special Offer 30 Days / Total 5GB
+    $3.34 USD [PROMO] | 4.9GB | 30 days
+  ΓÇó MicroEsim: Europe 33 Countries 3 Days / Total 3GB
+    $2.26 USD | 2.9GB | 3 days
+    ΓÜá∩╕Å Promo already used for this provider - paying full price
+
+SOLUTION #6
+----------------------------------------
+COST: $5.60 USD / $7.67 CAD [1 FREE]
+DATA: 8.8GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó MicroEsim: Europe Special Offer 30 Days / Total 5GB
+    $3.34 USD [PROMO] | 4.9GB | 30 days
+  ΓÇó MicroEsim: Europe 33 Countries 3 Days / Total 3GB
+    $2.26 USD | 2.9GB | 3 days
+    ΓÜá∩╕Å Promo already used for this provider - paying full price
+
+SOLUTION #7
+----------------------------------------
+COST: $5.61 USD / $7.68 CAD [1 FREE]
+DATA: 10.3GB | DAYS: 30 | ACTIVATIONS: 2 | TOP-UPS: 0 | 2 accounts
+PLANS:
+  ΓÇó iRoamly: iRoamly-eSIM-500MB-1 Day-Daily-Free
+    FREE | 500MB | 1 days
+  ΓÇó eSimfly: European Union + the UK 10 GB 30 Days
+    $5.61 USD [PROMO] | 9.8GB | 30 days
+
+SOLUTION #8
+----------------------------------------
+COST: $5.61 USD / $7.68 CAD [1 FREE]
+DATA: 9.9GB | DAYS: 30 | ACTIVATIONS: 2 | TOP-UPS: 0 | 2 accounts
+PLANS:
+  ΓÇó Keepgo: Corvus Europe
+    FREE | 100MB | 7 days
+  ΓÇó eSimfly: European Union + the UK 10 GB 30 Days
+    $5.61 USD [PROMO] | 9.8GB | 30 days
+
+SOLUTION #9
+----------------------------------------
+COST: $5.61 USD / $7.68 CAD [2 FREE]
+DATA: 11.2GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó GigSky: Europe
+    FREE | 500MB | 7 days
+  ΓÇó eSimfly: European Union + the UK 10 GB 30 Days
+    $5.61 USD [PROMO] | 9.8GB | 30 days
+
+SOLUTION #10
+----------------------------------------
+COST: $5.61 USD / $7.68 CAD [2 FREE]
+DATA: 11.3GB | DAYS: 180 | ACTIVATIONS: 3 | TOP-UPS: 0 | 3 accounts
+PLANS:
+  ΓÇó FairPlay: FairPlay FirstFill FREE 1 GB 180 DAYS
+    FREE | 1000MB | 180 days
+  ΓÇó Roamless: FREE Europe eSIM &amp; Data
+    FREE | 525MB | 30 days
+    Γä╣∩╕Å Pay-as-you-go pricing
+  ΓÇó eSimfly: European Union + the UK 10 GB 30 Days
+    $5.61 USD [PROMO] | 9.8GB | 30 days
+
+================================================================================
+ΓÅ▒∩╕Å  Execution time: 1.71 seconds
+================================================================================
