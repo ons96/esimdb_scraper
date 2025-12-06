@@ -25,7 +25,8 @@ This project is an **eSIM Plan Optimizer** for European travel. It scrapes data 
 1.  **Install Dependencies**: `pip install -r requirements.txt` (needs `requests`, `pandas`, `beautifulsoup4`, `lxml`, `tqdm`).
 2.  **Scrape Plans**: `python scrape_europe_plans.py`
 3.  **Scrape Promo Rules**: `python scrape_promo_recurrence.py` (updates cache).
-4.  **Run Optimizer**: `python optimize_esim_plans.py`
+4.  **Verify Logic (Optional)**: `python verify_promo_logic.py` (confirms one-time promo pricing).
+5.  **Run Optimizer**: `python optimize_esim_plans.py`
 
 ## Prompt for Next AI Agent
 *Copy and paste this into your next AI tool to resume work:*
