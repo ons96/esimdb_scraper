@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# Large data files (regenerate with scrape_europe_plans.py)
+esim_plans_europe.csv
+esim_plans_europe_filtered.csv
+esim_api_raw.json
+esim_api_full_dump.csv
+esim_api_full_dump.json
+
+# Cache files (regenerate by running scripts)
+provider_cache.json
+promo_recurrence_cache.json
+
+# Logs
+*.log
+optimizer_run.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
