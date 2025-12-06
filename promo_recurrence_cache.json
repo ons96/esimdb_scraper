@@ -1,0 +1,891 @@
+{
+  "6875cc9ee40f4fd4c110ce88": {
+    "name": "abesteSIM",
+    "slug": "abestesim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68eccb704504d6cf10609144": {
+    "name": "AdventureSIMs",
+    "slug": "adventuresims",
+    "promo_type": "unlimited",
+    "promo_code": "ESIMDB5",
+    "promo_discount": 5
+  },
+  "5d663d552a89717945a0d26d": {
+    "name": "Airalo",
+    "slug": "airalo",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB15",
+    "promo_discount": 15
+  },
+  "669ecc2324128bc08c341abe": {
+    "name": "airdatalink",
+    "slug": "airdatalink",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 5
+  },
+  "6111c0893bead6451dd9ce51": {
+    "name": "Airhub",
+    "slug": "airhub",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB07",
+    "promo_discount": 7
+  },
+  "67f7ef2af6193863e84220a1": {
+    "name": "alodata",
+    "slug": "alodata",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 20
+  },
+  "665ed6fa8fd63873885d7aeb": {
+    "name": "Always Mobile",
+    "slug": "always-mobile",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68142a2bb3fbc638bfc464ef": {
+    "name": "Amigo eSIM",
+    "slug": "amigo",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "6893406fad0c5ce27be2e9bd": {
+    "name": "BambooSIM",
+    "slug": "bamboosim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "656073451f0926ec7caa444f": {
+    "name": "BetterRoaming",
+    "slug": "betterroaming",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "5eb95317a5faaf0b7dfa9b24": {
+    "name": "Billion Connect",
+    "slug": "billionconnect",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "6284ecd32e3b6ce037733d6e": {
+    "name": "BNESIM",
+    "slug": "bnesim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB15",
+    "promo_discount": 15
+  },
+  "6201b8626cafb3f3836d6acb": {
+    "name": "Bouygues Telecom",
+    "slug": "bouygues-telecom",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6645ebd70ee8bdf7b1b24ed2": {
+    "name": "Breeze",
+    "slug": "breeze",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "67da4da6ff6041b77e7c4db1": {
+    "name": "ByteSIM",
+    "slug": "bytesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "682d271c08820152a644c1ce": {
+    "name": "ChillaxSIM",
+    "slug": "chillaxsim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB3USD",
+    "promo_discount": 10
+  },
+  "6809c2333db6ecdf6272bc41": {
+    "name": "ConnectedYou",
+    "slug": "connectedyou",
+    "promo_type": "unlimited",
+    "promo_code": "ESIMDB20",
+    "promo_discount": 20
+  },
+  "66c47261d104e43232185ad1": {
+    "name": "Driffle eSIM",
+    "slug": "driffle",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "6747c8e603e7509b3dc0bfc3": {
+    "name": "Earth Esim",
+    "slug": "earth-esim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "65bef1401c656f6234208976": {
+    "name": "easySim",
+    "slug": "easysim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "656019a51f0926ec7c9be0d2": {
+    "name": "EscapeSIM",
+    "slug": "escapesim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "66d971ff6734f85a87610d92": {
+    "name": "eSIM Cards",
+    "slug": "esim-cards",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "6842ac07d9403b95ce71e2c0": {
+    "name": "eSIM-On Shop",
+    "slug": "esim-on",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5db95ed606447a066699d839": {
+    "name": "eSIM2Fly",
+    "slug": "esim2fly",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "651a85325fee853583ffe8e5": {
+    "name": "eSIM4Travel",
+    "slug": "esim4travel",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68d9f58e1ca1afab5066f0bd": {
+    "name": "ESIM888",
+    "slug": "esim888",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67fcf6bbbbc312c4799a2e78": {
+    "name": "eSIMania",
+    "slug": "esimania",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 5
+  },
+  "6579951a2ab42e58d53befcd": {
+    "name": "Esimatic",
+    "slug": "esimatic",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "66e7e0c07bf608c0e0e49f45": {
+    "name": "eSIMatrix",
+    "slug": "esimatrix",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "6764f0cca7e04a963bb3a185": {
+    "name": "eSIMCard",
+    "slug": "esimcard",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68c14302db0d9dcc729f5232": {
+    "name": "ESIM.DOG \ud83d\udc36",
+    "slug": "esimdog",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67f32a92d392d55306110f1a": {
+    "name": "eSimFlare",
+    "slug": "esimflare",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "691a70e2a3dd350531e33c74": {
+    "name": "eSimfly",
+    "slug": "esimfly",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 5
+  },
+  "66e7e84524aea80bf91cdd01": {
+    "name": "ESIMFUN",
+    "slug": "esimfun",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68f1a76765e07d0be845b758": {
+    "name": "eSIM NEO",
+    "slug": "esimneo",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 5
+  },
+  "667183eb07b54f361a880c5a": {
+    "name": "eSIMo",
+    "slug": "esimo",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 22
+  },
+  "60acd76e464f901c1fcceb7c": {
+    "name": "eSIMplus",
+    "slug": "esimplus",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68a99855f4b71e31b8711ba0": {
+    "name": "eSIM Prime",
+    "slug": "esimprime",
+    "promo_type": "error",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "65aa0df15b71971c8cb28801": {
+    "name": "eSIM.sm",
+    "slug": "esimsm",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "66907fe1b6e41711f1516527": {
+    "name": "Esimtrav",
+    "slug": "esimtrav",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "659fbea879f1e6c5568353ba": {
+    "name": "eSIMX",
+    "slug": "esimx",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 15
+  },
+  "6869f31e709a1ddbfd440fe7": {
+    "name": "eSimy",
+    "slug": "esimy",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "675932492a67cac0f31af1af": {
+    "name": "esimzon",
+    "slug": "esimzon",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB03",
+    "promo_discount": 3
+  },
+  "658542de5131ef287a24cf6f": {
+    "name": "Eskimo eSIM",
+    "slug": "eskimo",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "640e71222097580dd4a88d0b": {
+    "name": "ETravelSim",
+    "slug": "etravelsim",
+    "promo_type": "unlimited",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "6569737630f6dcfb30352bf3": {
+    "name": "EZsim",
+    "slug": "ezsim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "68a70827c30bca8fddd0f322": {
+    "name": "Ezy eSIM",
+    "slug": "ezyesim",
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB10",
+    "promo_discount": 10
+  },
+  "69007ec7060073f43b25c6a8": {
+    "name": "FairPlay",
+    "slug": "fairplay",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66719ce7b8d1560ec8b11691": {
+    "name": "Firsty",
+    "slug": "firsty",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67e16466ddb1a2946defdd74": {
+    "name": "Gaza Online",
+    "slug": "gazaonline",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "645a23dbc6a3d88eeb76b9ea": {
+    "name": "GIGAGO",
+    "slug": "gigago",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67d42f6255619141b6762338": {
+    "name": "Giga.Tel",
+    "slug": "gigatel",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5c89d6b91144d06205595375": {
+    "name": "GigSky",
+    "slug": "gigsky",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5e8d7bfe206f3b3af9d16058": {
+    "name": "GlobaleSIM",
+    "slug": "globalesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "655c9ea51f0926ec7c37def1": {
+    "name": "GoMoWorld",
+    "slug": "gomoworld",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "643fbeb179777aa7ebe1e0f6": {
+    "name": "Instabridge",
+    "slug": "instabridge",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68a5623b2e02eed2d6631115": {
+    "name": "Internet in Laos",
+    "slug": "internetlaos",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66ac21966d047ed956f30520": {
+    "name": "iRoamly",
+    "slug": "iroamly",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6642b800f53ed01b9280a7ec": {
+    "name": "Japan Wireless eSIM",
+    "slug": "japan-wireless",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "656ef630e60950c9a706e6ff": {
+    "name": "Jetpac",
+    "slug": "jetpac",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "684e1eabd07ed58cc6292ed4": {
+    "name": "Jett-On",
+    "slug": "jett-on",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66d97b236734f85a8761a32d": {
+    "name": "Keep On Roaming",
+    "slug": "keep-on-roaming",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "61092d9ae3da2061875bc429": {
+    "name": "Keepgo",
+    "slug": "keepgo",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6627986cc0a5b22838c8b741": {
+    "name": "Kolet",
+    "slug": "kolet",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6760c58e8c8ea74873b8bca7": {
+    "name": "LinkeSIM",
+    "slug": "linkesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68eb627bce9b25a6b884d2c7": {
+    "name": "LNVPN",
+    "slug": "lnvpn",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68d9d80d1ca1afab5063d1a6": {
+    "name": "Lotso Travel",
+    "slug": "lotsotravel",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6271ccfff446fdedf3ef9a00": {
+    "name": "Manet Travel",
+    "slug": "manet",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6855243c9a0e93cd267fe4a0": {
+    "name": "MATCHA Japan eSIM",
+    "slug": "matcha-jp",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "65fd5b85efc7ee1e3444055a": {
+    "name": "MicroEsim",
+    "slug": "microesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67234c91e7fe43281f91e226": {
+    "name": "MobileSIM",
+    "slug": "mobilesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6386134ed12efb94fc05f1fb": {
+    "name": "MobiMatter",
+    "slug": "mobimatter",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "663a2caf5fddf2d5b402fd46": {
+    "name": "mobineX",
+    "slug": "mobinex",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "648ad56367000ad251f95680": {
+    "name": "Monty eSIM",
+    "slug": "monty-esim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "661627fa152261f55b820bc8": {
+    "name": "MoreMins eSIM",
+    "slug": "moremins",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5c6df52a447a286186dea1db": {
+    "name": "MTX Connect",
+    "slug": "mtx-connect",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67f0abeb2a0a3aefec7a4e0f": {
+    "name": "nextSIM",
+    "slug": "nextsim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "602194fd4b7cb92caf6ffad3": {
+    "name": "Nomad",
+    "slug": "nomad",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "633c27b9b0b2d82c28cdf1b9": {
+    "name": "NorthSIM",
+    "slug": "northsim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67e21fecbee2c9848c987c36": {
+    "name": "NXTL Mobile",
+    "slug": "nxtlmobile",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68ec5eda4504d6cf105b4184": {
+    "name": "Ohayu",
+    "slug": "ohayu",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68c90ae5674c19ea079110fd": {
+    "name": "Orbit Mobile",
+    "slug": "orbitmobile",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "65c0ade51c656f623426e3d5": {
+    "name": "PhoneBox",
+    "slug": "phonebox",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67f4e1829336f32854e95515": {
+    "name": "Qrispy eSIM",
+    "slug": "qrispy",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5d16f93191d4f93192b3349c": {
+    "name": "RedteaGO",
+    "slug": "redtea",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "663a1a4b5fddf2d5b402906b": {
+    "name": "Roamify",
+    "slug": "roamify",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "688e9599d96ecdfe09abb2cc": {
+    "name": "Roamingo",
+    "slug": "roamingo",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66e18e73597f9c6d753b7571": {
+    "name": "Roamless",
+    "slug": "roamless",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68f051d5d01131159d49987f": {
+    "name": "Virgin Connect Roam",
+    "slug": "roamvirginconnect",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "660ea2de2f17b102e83a96f8": {
+    "name": "Saily",
+    "slug": "saily",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "673159aa72d09200e94affe3": {
+    "name": "Simbye",
+    "slug": "simbye",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6703d78781b690b781d3bac0": {
+    "name": "Simfinity",
+    "slug": "simfinity",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6604b5d4447d135968a696a3": {
+    "name": "Sim Local",
+    "slug": "simlocal",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "621474082e011dca5e3ebd1f": {
+    "name": "SimOptions",
+    "slug": "simoptions",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "690be215e0554199685a1ecb": {
+    "name": "SIMPULSE",
+    "slug": "simpulse",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6882fc0f139f259f48d398f7": {
+    "name": "SimWallet",
+    "slug": "simwallet",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68119883d6e74fc935f6b9d7": {
+    "name": "SIMzip",
+    "slug": "simzip",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "689d5b0cd5589d4f71cf9559": {
+    "name": "Snap eSIM",
+    "slug": "snapesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6907d3a856b42f8e37b280bd": {
+    "name": "Soovia eSIM",
+    "slug": "soovia",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5e54eccbf6ea630579ea4758": {
+    "name": "Soracom Mobile",
+    "slug": "soracommobile",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "690c7118e055419968646f6e": {
+    "name": "Spark Roam",
+    "slug": "sparkroam",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5d4119b043734f666095aedd": {
+    "name": "Stork Mobile",
+    "slug": "storkmobile",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "683f99e07ee7f5a961c0c859": {
+    "name": "Strong eSIM",
+    "slug": "strong-esim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66fb8684e6cdd578fe555fdc": {
+    "name": "Supera link",
+    "slug": "superalink",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "63c9055d1fddfcd02ef84f69": {
+    "name": "Textr eSIM",
+    "slug": "textr",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "681599ea889235669e89497a": {
+    "name": "thirr.com",
+    "slug": "thirr",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6729dd5072d09200e91cc8bd": {
+    "name": "TooSim",
+    "slug": "toosim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66744f19437944d4aa0af252": {
+    "name": "TraveleSIM.CH",
+    "slug": "travelesim-ch",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66f0e534caf2be119de832f9": {
+    "name": "TravelGator eSIM",
+    "slug": "travelgatorsim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "64aa14075d62bfe82117aa19": {
+    "name": "TravelKon",
+    "slug": "travelkon",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "616a376c0bb8134ba33591ed": {
+    "name": "trifa",
+    "slug": "trifa",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "6686050b234c9994fcbd5060": {
+    "name": "Truely",
+    "slug": "truely",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5c89d6ab1144d06205595374": {
+    "name": "Truphone",
+    "slug": "truphone",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5c6df152447a286186dea121": {
+    "name": "Ubigi",
+    "slug": "ubigi",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5d9489fcb626af051244d029": {
+    "name": "UPeSIM",
+    "slug": "upesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66ac20ed6d047ed956f300ac": {
+    "name": "USA eSIM",
+    "slug": "usaesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "66769b11aae616d28af63a88": {
+    "name": "Voye Global",
+    "slug": "voye-global",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "65ae7281f6f399ef755be4d9": {
+    "name": "WG JAPAN eSIM",
+    "slug": "wg-esim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "681eebc64075131923199dbc": {
+    "name": "Wifio",
+    "slug": "wifio",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68b5073e7deca5e79fd665bb": {
+    "name": "Wiiline",
+    "slug": "wiiline",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68e7198b6cfed51c366a6338": {
+    "name": "WonderConnect",
+    "slug": "wonderconnect",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68f2f31416dfe743e600212e": {
+    "name": "WoWo Sim",
+    "slug": "wowosim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "68c3b5b9c0b172df73f180d8": {
+    "name": "YeeSiM",
+    "slug": "yeesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "5d4a55600c59513ea8d90d02": {
+    "name": "Yesim",
+    "slug": "yesim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "63760bdc4e2b1c13f365b600": {
+    "name": "Yoho Mobile",
+    "slug": "yoho-mobile",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "63c52208de7c07fba95ec104": {
+    "name": "GLOBAL YO",
+    "slug": "yoverse",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  },
+  "67f5bc61d3538b2c85713271": {
+    "name": "ZenSim",
+    "slug": "zensim",
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
+  }
+}

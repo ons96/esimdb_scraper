@@ -1,0 +1,6 @@
+provider,plan_title,capacity,period,price,data_mb,validity_days,plan_cost,is_daily_quota,plan_total_data_mb,total_plan_cost_for_trip,overall_cost_per_day
+5e8d7bfe206f3b3af9d16058,France,eSIM Plan at local rates to France. Online top up available when bundle is reached.,30 Days,8.55,,30,8.55,False,,8.55,0.7772727272727273
+659fbea879f1e6c5568353ba,France 10GB 7Days,10000 MB,7 Days,5.87,10000.0,7,5.87,False,10000.0,11.74,1.0672727272727274
+5c6df152447a286186dea121,,10000 MB,7 Days,6.3,10000.0,7,6.3,False,10000.0,12.6,1.1454545454545455
+656ef630e60950c9a706e6ff,France 15GB,15000 MB,30 Days,17,15000.0,30,17.0,False,15000.0,17.0,1.5454545454545454
+643fbeb179777aa7ebe1e0f6,20 GB France eSIM Mobile Data Plan,20000 MB,7 Days,12.8,20000.0,7,12.8,False,20000.0,25.6,2.3272727272727276

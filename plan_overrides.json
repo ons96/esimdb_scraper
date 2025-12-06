@@ -1,0 +1,17 @@
+{
+    "plan_overrides": [
+        {
+            "match": {
+                "name_contains": "FairPlay FirstFill"
+            },
+            "override": {
+                "new_user_only": true,
+                "requires_phone_for_account": true,
+                "hassle_penalty_per_account": 0.50
+            },
+            "note": "Requires phone number for new account. IMEI/EID may be flagged."
+        }
+    ],
+    "default_hassle_penalty": 0.50,
+    "comment": "hassle_penalty_per_account adds cost for each new account needed (to account for inconvenience)"
+}

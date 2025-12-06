@@ -1,0 +1,5 @@
+provider,provider_id,provider_slug,plan_id,plan_title,price,purchase_count,days_covered,data_delivered_mb,used_mb_for_feasibility,plan_total_data_mb,validity_days,effective_validity_days_at_R,effective_validity_days_at_R_trip,effective_cost_per_day_at_R_trip,promo_used,cost_total,plan_effective_days_at_R
+Eskimo eSIM,658542de5131ef287a24cf6f,eskimo,68b155f55b82ba2a963c4f5f,Global eSIM 1GB (2 years),0.0,1,5,1000.0,1000.0,1000.0,730,4.878048780487805,4.878048780487805,0.0,True,0.0,4
+GLOBAL YO,63c52208de7c07fba95ec104,yoverse,68c84cc79bf54bb0506165ee,Europe Explorer - 3 Days - 1 GB (39 countries),0.0,1,3,615.0,615.0,1000.0,3,3.0,3.0,0.0,True,0.0,3
+Roamless,66e18e73597f9c6d753b7571,roamless,68c00faba25ba7dd4357d7a0,FREE Europe eSIM &amp; Data,0.0,1,4,525.0,525.0,525.0,30,2.5609756097560976,2.5609756097560976,0.0,True,0.0,2
+GigSky,5c89d6b91144d06205595375,gigsky,68c0a94e505eafa5d7f2b605,Europe,0.0,1,1,500.0,115.0,500.0,7,2.4390243902439024,2.4390243902439024,0.0,True,0.0,2
