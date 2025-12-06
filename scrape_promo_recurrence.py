@@ -3,6 +3,9 @@ PROMO RECURRENCE SCRAPER - Fetches promo usage limits from esimdb provider pages
 
 This script visits each provider page on esimdb to extract whether their promo code
 is "One-time" or "Unlimited" use, since this info is NOT in the API.
+
+Uses BeautifulSoup with the specific badge class that contains the promo type.
+Optimized with ThreadPoolExecutor for concurrent scraping.
 """
 import requests
 from bs4 import BeautifulSoup
@@ -10,6 +13,8 @@ import json
 import time
 import re
 import os
+import concurrent.futures
+from tqdm import tqdm
 
 # Cache file path
 PROMO_CACHE_FILE = "promo_recurrence_cache.json"
@@ -18,48 +23,51 @@ BASE_PROVIDER_URL = "https://esimdb.com/region/europe/{slug}"
 
 def get_all_providers():
     """Get list of all providers from API"""
-    resp = requests.get(PROVIDERS_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
-    return resp.json()
+    try:
+        resp = requests.get(PROVIDERS_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
+        return resp.json()
+    except Exception as e:
+        print(f"Error fetching providers list: {e}")
+        return []
 
-def scrape_promo_info(provider_slug):
+def scrape_promo_info(provider_data):
     """
     Scrape a provider page to get promo recurrence info.
-    Returns dict with promo_code, promo_type (one-time/unlimited/none), promo_discount
+    Returns dict with promo_code, promo_type (one-time/unlimited/unknown), promo_discount
     """
-    url = BASE_PROVIDER_URL.format(slug=provider_slug)
+    slug = provider_data.get("slug")
+    if not slug:
+        return None
+
+    url = BASE_PROVIDER_URL.format(slug=slug)
     try:
         resp = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
+        soup = BeautifulSoup(resp.text, 'lxml')
         html = resp.text
         
-        # Look for promo patterns in the HTML
-        # The page typically shows: "GET X% OFF", "One-time" or "Unlimited", promo code
-        
-        # Try to find promo code and type using regex patterns
         promo_code = None
         promo_type = "unknown"
         promo_discount = None
         
-        # Find the promo code first
+        # Method 1: Find badge with specific class (most reliable)
+        # The promo type is in a div with classes: badge rounded-full text-caption
+        badges = soup.find_all(class_=lambda c: c and 'badge' in c and 'rounded-full' in c and 'text-caption' in c)
+        
+        for badge in badges:
+            text = badge.get_text(strip=True).lower()
+            if 'one-time' in text or 'one time' in text:
+                promo_type = "one-time"
+                break
+            elif 'unlimited' in text:
+                promo_type = "unlimited"
+                break
+        
+        # Find promo code (ESIMDB pattern)
         code_match = re.search(r'([A-Z0-9]+ESIMDB[A-Z0-9]*|ESIMDB[A-Z0-9]+)', html)
         if code_match:
             promo_code = code_match.group(1)
-            code_pos = code_match.start()
-            
-            # Look for promo type within 500 chars BEFORE the promo code
-            # This is where "One-time" or "Unlimited" label appears in the HTML
-            before_code = html[max(0, code_pos-500):code_pos]
-            
-            # Find the LAST occurrence of these words before the code (closest to it)
-            one_time_pos = max(before_code.rfind("One-time"), before_code.rfind("one-time"))
-            unlimited_pos = before_code.rfind("Unlimited")  # Case sensitive for label
-            
-            # Whichever is closer to the code (higher position) wins
-            if one_time_pos > unlimited_pos:
-                promo_type = "one-time"
-            elif unlimited_pos > one_time_pos:
-                promo_type = "unlimited"
         
-        # Look for discount percentage
+        # Find discount percentage
         discount_match = re.search(r'GET\s+(\d+)\s*%\s*OFF', html, re.IGNORECASE)
         if discount_match:
             promo_discount = int(discount_match.group(1))
@@ -71,13 +79,23 @@ def scrape_promo_info(provider_slug):
                 promo_discount = f"${dollar_match.group(1)}"
         
         return {
+            "provider_id": provider_data.get("_id"),
+            "name": provider_data.get("name"),
+            "slug": slug,
             "promo_type": promo_type,
             "promo_code": promo_code,
             "promo_discount": promo_discount,
         }
     except Exception as e:
-        print(f"  Error scraping {provider_slug}: {e}")
-        return {"promo_type": "error", "promo_code": None, "promo_discount": None}
+        # print(f"  Error scraping {slug}: {e}") # Reduce noise
+        return {
+            "provider_id": provider_data.get("_id"),
+            "name": provider_data.get("name"),
+            "slug": slug,
+            "promo_type": "error", 
+            "promo_code": None, 
+            "promo_discount": None
+        }
 
 def load_existing_cache():
     """Load existing cache to avoid re-scraping"""
@@ -93,7 +111,7 @@ def save_cache(cache):
 
 def main():
     print("="*60)
-    print("PROMO RECURRENCE SCRAPER")
+    print("PROMO RECURRENCE SCRAPER (Optimized)")
     print("="*60)
     
     # Get all providers
@@ -105,62 +123,57 @@ def main():
     cache = load_existing_cache()
     print(f"Existing cache: {len(cache)} providers")
     
-    # Scrape each provider
-    scraped_count = 0
-    one_time_count = 0
-    unlimited_count = 0
-    
+    # Identify providers that need scraping
+    providers_to_scrape = []
     for p in providers:
-        slug = p.get("slug", "")
-        provider_id = p.get("_id", "")
-        name = p.get("name", "")
-        
-        if not slug:
-            continue
-        
-        # Skip if already in cache
-        if provider_id in cache:
-            if cache[provider_id].get("promo_type") == "one-time":
-                one_time_count += 1
-            elif cache[provider_id].get("promo_type") == "unlimited":
-                unlimited_count += 1
-            continue
-        
-        print(f"Scraping {name} ({slug})...", end=" ")
-        promo_info = scrape_promo_info(slug)
-        
-        cache[provider_id] = {
-            "name": name,
-            "slug": slug,
-            **promo_info
-        }
-        
-        status = promo_info["promo_type"]
-        if status == "one-time":
-            one_time_count += 1
-        elif status == "unlimited":
-            unlimited_count += 1
-        
-        print(status)
-        scraped_count += 1
-        
-        # Rate limit to be nice to the server
-        time.sleep(0.5)
-        
-        # Save periodically
-        if scraped_count % 20 == 0:
-            save_cache(cache)
-            print(f"  (saved {len(cache)} providers)")
+        pid = p.get("_id")
+        if pid not in cache:
+            providers_to_scrape.append(p)
+            
+    print(f"Providers to scrape: {len(providers_to_scrape)}")
     
+    if not providers_to_scrape:
+        print("All providers cached. Exiting.")
+        return
+
+    # Scrape concurrently
+    results_buffer = []
+    MAX_WORKERS = 10
+    
+    print(f"Starting scrape with {MAX_WORKERS} threads...")
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        # Map each provider to a future
+        future_to_provider = {executor.submit(scrape_promo_info, p): p for p in providers_to_scrape}
+        
+        # Use tqdm for progress bar
+        for future in tqdm(concurrent.futures.as_completed(future_to_provider), total=len(providers_to_scrape), unit="provider"):
+            provider = future_to_provider[future]
+            try:
+                data = future.result()
+                if data:
+                    pid = data["provider_id"]
+                    # Store simpler dict in cache
+                    cache[pid] = {k: v for k, v in data.items() if k != "provider_id"}
+                    
+                    if len(cache) % 10 == 0:
+                        save_cache(cache)
+            except Exception as exc:
+                print(f'{provider.get("name")} generated an exception: {exc}')
+                
     # Final save
     save_cache(cache)
+    
+    # Statistics
+    one_time = sum(1 for v in cache.values() if v.get("promo_type") == "one-time")
+    unlimited = sum(1 for v in cache.values() if v.get("promo_type") == "unlimited")
     
     print()
     print("="*60)
     print(f"COMPLETE: {len(cache)} providers cached")
-    print(f"  One-time promos: {one_time_count}")
-    print(f"  Unlimited promos: {unlimited_count}")
-    print(f"  Unknown/Other: {len(cache) - one_time_count - unlimited_count}")
+    print(f"  One-time promos: {one_time}")
+    print(f"  Unlimited promos: {unlimited}")
+    print(f"  Unknown/Other: {len(cache) - one_time - unlimited}")
     print(f"Saved to: {PROMO_CACHE_FILE}")
     print("="*60)
 

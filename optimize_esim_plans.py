@@ -54,24 +54,45 @@ logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format='%(asctime)s -
 
 def load_overrides_config():
     """Load plan overrides and config from JSON file"""
-    if os.path.exists(OVERRIDES_FILE):
-        try:
-            with open(OVERRIDES_FILE, "r") as f:
-                data = json.load(f)
-                return {
-                    "plan_overrides": data.get("plan_overrides", []),
-                    "provider_promo_overrides": data.get("provider_promo_overrides", {}),
-                    "default_promo_type": data.get("default_promo_type", "unlimited"),
-                    "hassle_penalty": data.get("default_hassle_penalty", DEFAULT_HASSLE_PENALTY),
-                }
-        except:
-            pass
-    return {
+    config = {
         "plan_overrides": [],
         "provider_promo_overrides": {},
         "default_promo_type": "unlimited",
         "hassle_penalty": DEFAULT_HASSLE_PENALTY,
     }
+
+    # Load manual overrides
+    if os.path.exists(OVERRIDES_FILE):
+        try:
+            with open(OVERRIDES_FILE, "r") as f:
+                data = json.load(f)
+                config["plan_overrides"] = data.get("plan_overrides", [])
+                config["provider_promo_overrides"] = data.get("provider_promo_overrides", {})
+                config["default_promo_type"] = data.get("default_promo_type", "unlimited")
+                config["hassle_penalty"] = data.get("default_hassle_penalty", DEFAULT_HASSLE_PENALTY)
+        except:
+            pass
+            
+    # Load scraped cache and merge (manual overrides take precedence)
+    cache_file = "promo_recurrence_cache.json"
+    if os.path.exists(cache_file):
+        try:
+            with open(cache_file, "r") as f:
+                scrape_cache = json.load(f)
+                for pid, info in scrape_cache.items():
+                    # Only add if not manually overridden and we found a specific type
+                    if pid not in config["provider_promo_overrides"]:
+                        p_type = info.get("promo_type", "unknown")
+                        if p_type in ["one-time", "unlimited"]:
+                            config["provider_promo_overrides"][pid] = {
+                                "promo_type": p_type,
+                                "name": info.get("name", "")
+                            }
+        except:
+            pass
+            
+    return config
+    return config
 
 def apply_overrides(plan, overrides):
     """Apply any matching overrides to a plan"""
