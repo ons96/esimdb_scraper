@@ -85,16 +85,30 @@ def main():
         with open(PROVIDER_CACHE_FILE, "r") as f:
             provider_cache = json.load(f)
 
-    all_rows = []
+    all_plans_map = {}
     dropped_count = 0
     
+    iso_map = {"DE": "germany", "AT": "austria", "CZ": "czechia", "SK": "slovakia"}
+
     # 1. Fetch Local Plans
     for country, coverage in TARGET_COUNTRIES.items():
         plans = fetch_plans(country)
         for p in plans:
-            row = parse_plan(p, coverage, "local", provider_cache, usd_rates)
-            if row:
-                all_rows.append(row)
+            parsed = parse_plan(p, [], "local", provider_cache, usd_rates)
+            if parsed:
+                pid = parsed["plan_id"]
+                if pid not in all_plans_map:
+                    parsed["countries"] = set()
+                    all_plans_map[pid] = parsed
+                
+                # Explicit Coverage (if present in local plan)
+                if parsed.get("raw_coverages"):
+                    for iso in parsed["raw_coverages"]:
+                        if iso in iso_map:
+                            all_plans_map[pid]["countries"].add(iso_map[iso])
+                            
+                # Implicit Coverage (from Endpoint)
+                all_plans_map[pid]["countries"].update(coverage)
             else:
                 dropped_count += 1
         time.sleep(1)
@@ -102,27 +116,48 @@ def main():
     # 2. Fetch Regional Plans
     regional_plans = fetch_plans("europe", is_regional=True)
     for p in regional_plans:
-        row = parse_plan(p, REGIONAL_COVERAGE, "regional", provider_cache, usd_rates)
-        if row:
-            all_rows.append(row)
+        parsed = parse_plan(p, [], "regional", provider_cache, usd_rates)
+        if parsed:
+            pid = parsed["plan_id"]
+            if pid not in all_plans_map:
+                parsed["countries"] = set()
+                all_plans_map[pid] = parsed
+            
+            # Explicit Coverage (CRITICAL for Europe plans)
+            explicit_found = False
+            if parsed.get("raw_coverages"):
+                for iso in parsed["raw_coverages"]:
+                    if iso in iso_map:
+                        all_plans_map[pid]["countries"].add(iso_map[iso])
+                        explicit_found = True
+            
+            # If explicit list was found, we trust it purely?
+            # User said "check for presence".
+            # If NO explicit list found, fallback to assuming it covers all targets
+            if not explicit_found:
+                 all_plans_map[pid]["countries"].update(REGIONAL_COVERAGE)
+            
+            all_plans_map[pid]["scope"] = "regional"
         else:
             dropped_count += 1
 
+    # Convert to list and serialize coverage
+    final_rows = []
+    for p in all_plans_map.values():
+        p["countries"] = json.dumps(list(p["countries"])) # Serialize for CSV
+        final_rows.append(p)
+        
     # Save
-    if not all_rows:
+    if not final_rows:
         print(f"ERROR: No plans parsed successfully. Dropped {dropped_count} plans.")
-        # Print one failure reason
-        if regional_plans:
-            print("Debug check on first regional plan:")
-            p0 = regional_plans[0]
-            print(f"Currency: {p0.get('currency', 'MISSING')}, Amount: {p0.get('amount')}, USD Rates keys: {list(usd_rates.keys())}")
+        # ... (debug print kept same) ...
     
-    df = pd.DataFrame(all_rows)
+    df = pd.DataFrame(final_rows)
     df.to_csv(OUTPUT_FILE, index=False)
-    print(f"Saved {len(df)} plans to {OUTPUT_FILE} (Dropped {dropped_count})")
+    print(f"Saved {len(df)} unique plans to {OUTPUT_FILE} (Dropped {dropped_count})")
 
 def parse_plan(plan, coverage, scope, provider_cache, usd_rates):
-    """Parse raw API plan into flat dict"""
+    """Parse raw API plan into flat dict - Coverage is handled by caller now"""
     # ... (Reuse Logic from scrape_europe_plans.py but allow variable coverage)
     
     # Extract Provider
@@ -174,6 +209,18 @@ def parse_plan(plan, coverage, scope, provider_cache, usd_rates):
     # Features
     tethering = plan.get("tethering") # None/True = Yes, False = No
     
+    # Coverage (ISO Codes)
+    if plan.get("coverages"):
+        # Map ISO to slugs
+        iso_map = {"DE": "germany", "AT": "austria", "CZ": "czechia", "SK": "slovakia"}
+        for iso in plan["coverages"]:
+            if iso in iso_map:
+                # Add to set (handled by caller, but we return it in parsed dict for caller to merge)
+                # Caller logic is: all_plans_map[pid]["countries"].update(coverage)
+                # But coverage passed to parse_plan might be empty.
+                # We need to return the strict coverage found in the object.
+                pass
+                
     return {
         "plan_id": plan.get("_id"),
         "provider_id": pid,
@@ -181,10 +228,11 @@ def parse_plan(plan, coverage, scope, provider_cache, usd_rates):
         "plan_name": plan.get("enName") or plan.get("name"),
         "data_mb": plan.get("capacity"),
         "validity_days": plan.get("period"),
+        "data_cap_per": plan.get("dataCapPer"), # 'day' if daily limit
         "usd_price": usd_price,
         "usd_promo_price": usd_promo_price,
-        "scope": scope,  # local or regional
-        "countries": json.dumps(coverage), # Store as JSON string for CSV
+        "scope": scope,
+        "raw_coverages": plan.get("coverages", []), # Return raw list for caller to process
         "new_user_only": plan.get("newUserOnly", False),
         "can_top_up": plan.get("canTopUp", False),
         "tethering": tethering

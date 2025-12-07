@@ -476,7 +476,7 @@ def main():
             top_up_note = " [top-up OK]" if p.get('can_top_up') and p['qty'] > 1 else ""
             promo_note = " [PROMO]" if p.get('used_promo') else ""
             
-            print(f"  • {p['provider']}: {p['plan']}")
+            print(f"  - {p['provider']}: {p['plan']}")
             print(f"    {price_text}{qty_text}{top_up_note}{promo_note} | {p['data']} | {p['val']}")
             
             # Per-plan warnings (inline)

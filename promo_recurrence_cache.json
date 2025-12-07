@@ -16,28 +16,28 @@
   "5d663d552a89717945a0d26d": {
     "name": "Airalo",
     "slug": "airalo",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB15",
     "promo_discount": 15
   },
   "669ecc2324128bc08c341abe": {
     "name": "airdatalink",
     "slug": "airdatalink",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 5
   },
   "6111c0893bead6451dd9ce51": {
     "name": "Airhub",
     "slug": "airhub",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB07",
     "promo_discount": 7
   },
   "67f7ef2af6193863e84220a1": {
     "name": "alodata",
     "slug": "alodata",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB10",
     "promo_discount": 20
   },
@@ -51,35 +51,35 @@
   "68142a2bb3fbc638bfc464ef": {
     "name": "Amigo eSIM",
     "slug": "amigo",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
   "6893406fad0c5ce27be2e9bd": {
     "name": "BambooSIM",
     "slug": "bamboosim",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
   "656073451f0926ec7caa444f": {
     "name": "BetterRoaming",
     "slug": "betterroaming",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
   "5eb95317a5faaf0b7dfa9b24": {
     "name": "Billion Connect",
     "slug": "billionconnect",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
   "6284ecd32e3b6ce037733d6e": {
     "name": "BNESIM",
     "slug": "bnesim",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB15",
     "promo_discount": 15
   },
@@ -93,7 +93,7 @@
   "6645ebd70ee8bdf7b1b24ed2": {
     "name": "Breeze",
     "slug": "breeze",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
@@ -107,7 +107,7 @@
   "682d271c08820152a644c1ce": {
     "name": "ChillaxSIM",
     "slug": "chillaxsim",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB3USD",
     "promo_discount": 10
   },
@@ -191,7 +191,7 @@
   "6579951a2ab42e58d53befcd": {
     "name": "Esimatic",
     "slug": "esimatic",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
@@ -205,7 +205,7 @@
   "6764f0cca7e04a963bb3a185": {
     "name": "eSIMCard",
     "slug": "esimcard",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
@@ -226,7 +226,7 @@
   "691a70e2a3dd350531e33c74": {
     "name": "eSimfly",
     "slug": "esimfly",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 5
   },
@@ -240,30 +240,30 @@
   "68f1a76765e07d0be845b758": {
     "name": "eSIM NEO",
     "slug": "esimneo",
-    "promo_type": "unknown",
+    "promo_type": "unlimited",
     "promo_code": "ESIMDB10",
     "promo_discount": 5
   },
   "667183eb07b54f361a880c5a": {
     "name": "eSIMo",
     "slug": "esimo",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 22
   },
   "60acd76e464f901c1fcceb7c": {
     "name": "eSIMplus",
     "slug": "esimplus",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 10
   },
   "68a99855f4b71e31b8711ba0": {
     "name": "eSIM Prime",
     "slug": "esimprime",
-    "promo_type": "error",
-    "promo_code": null,
-    "promo_discount": null
+    "promo_type": "unknown",
+    "promo_code": "ESIMDB5",
+    "promo_discount": 5
   },
   "65aa0df15b71971c8cb28801": {
     "name": "eSIM.sm",
@@ -282,7 +282,7 @@
   "659fbea879f1e6c5568353ba": {
     "name": "eSIMX",
     "slug": "esimx",
-    "promo_type": "unknown",
+    "promo_type": "one-time",
     "promo_code": "ESIMDB10",
     "promo_discount": 15
   },
@@ -297,36 +297,36 @@
     "name": "esimzon",
     "slug": "esimzon",
     "promo_type": "unknown",
-    "promo_code": "ESIMDB03",
-    "promo_discount": 3
+    "promo_code": null,
+    "promo_discount": null
   },
   "658542de5131ef287a24cf6f": {
     "name": "Eskimo eSIM",
     "slug": "eskimo",
     "promo_type": "unknown",
-    "promo_code": "ESIMDB10",
-    "promo_discount": 10
+    "promo_code": null,
+    "promo_discount": null
   },
   "640e71222097580dd4a88d0b": {
     "name": "ETravelSim",
     "slug": "etravelsim",
-    "promo_type": "unlimited",
-    "promo_code": "ESIMDB10",
-    "promo_discount": 10
+    "promo_type": "unknown",
+    "promo_code": null,
+    "promo_discount": null
   },
   "6569737630f6dcfb30352bf3": {
     "name": "EZsim",
     "slug": "ezsim",
     "promo_type": "unknown",
-    "promo_code": "ESIMDB10",
-    "promo_discount": 10
+    "promo_code": null,
+    "promo_discount": null
   },
   "68a70827c30bca8fddd0f322": {
     "name": "Ezy eSIM",
     "slug": "ezyesim",
     "promo_type": "unknown",
-    "promo_code": "ESIMDB10",
-    "promo_discount": 10
+    "promo_code": null,
+    "promo_discount": null
   },
   "69007ec7060073f43b25c6a8": {
     "name": "FairPlay",
