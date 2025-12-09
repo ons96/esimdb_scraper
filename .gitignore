@@ -32,3 +32,5 @@ optimizer_run.log
 # OS
 .DS_Store
 Thumbs.db
+
+scraped_data/
