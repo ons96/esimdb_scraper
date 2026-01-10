@@ -397,6 +397,7 @@ def evaluate_combination(combo_data):
             "total_activations": total_activations,
             "total_topups": total_topups,
             "total_accounts": total_accounts,
+            "is_single_plan": False,  # Tag for display
         }
 
     return None
@@ -493,6 +494,56 @@ def main():
     print(f"Search space: {len(search_plans)} plans ({len(free_plans)} free)")
     print()
 
+    # Find all valid single-plan solutions
+    single_plan_solutions = []
+
+    for plan in valid_plans:
+        # Check if this single plan meets requirements
+        if plan.get("data_mb", 0) >= total_data_mb and plan.get("validity_days", 0) >= trip_days:
+            # Valid single plan solution
+            promo_price = plan.get("usd_promo_price")
+            regular_price = plan.get("usd_price") or 0
+
+            # Determine actual price to display
+            if promo_price is not None and promo_price < regular_price:
+                display_price = promo_price
+                used_promo = True
+            else:
+                display_price = regular_price
+                used_promo = False
+
+            solution = {
+                "display_cost": display_price,
+                "ranking_cost": display_price,  # No hassle penalty for single plan
+                "cad": display_price * 1.37,
+                "info": [{
+                    "plan": plan.get("plan_name", "Unknown"),
+                    "provider": plan.get("provider_name", "Unknown"),
+                    "price": display_price,
+                    "total_price": display_price,
+                    "data": f"{plan.get('data_mb', 0)/1024:.1f}GB" if plan.get('data_mb', 0) >= 1024 else f"{plan.get('data_mb', 0)}MB",
+                    "val": f"{plan.get('validity_days', 0)} days" if plan.get('validity_days', 0) > 0 else "No expiry",
+                    "qty": 1,
+                    "free": regular_price == 0,
+                    "can_top_up": False,
+                    "warnings": generate_plan_warnings(plan, 1, False),
+                    "accounts": 1,
+                    "used_promo": used_promo,
+                }],
+                "gb": plan.get("data_mb", 0) / 1024,
+                "days": plan.get("validity_days", 0),
+                "free_count": 1 if regular_price == 0 else 0,
+                "num_providers": 1,
+                "total_activations": 1,
+                "total_topups": 0,
+                "total_accounts": 1,
+                "is_single_plan": True,  # Tag for display
+            }
+            single_plan_solutions.append(solution)
+
+    print(f"Found {len(single_plan_solutions)} valid single-plan solutions")
+    print()
+
     all_combos = []
 
     for n in range(1, min(MAX_COMBO_SIZE, MAX_ESIM_ACTIVATIONS) + 1):
@@ -520,20 +571,32 @@ def main():
     solutions = []
     counter = 0
 
+    # Collect more combo solutions to ensure we don't miss good ones when merging with singles
+    COMBO_SEARCH_LIMIT = TOP_N_SOLUTIONS * 5
+
     for combo_data in tqdm(combo_data_list, desc="Checking combinations", unit="combo"):
         result = evaluate_combination(combo_data)
         if result:
             counter += 1
-            if len(solutions) < TOP_N_SOLUTIONS:
+            if len(solutions) < COMBO_SEARCH_LIMIT:
                 heapq.heappush(solutions, (-result["ranking_cost"], counter, result))
             elif result["ranking_cost"] < -solutions[0][0]:
                 heapq.heapreplace(solutions, (-result["ranking_cost"], counter, result))
 
     solutions = [s[2] for s in sorted(solutions, key=lambda x: -x[0])]
 
+    # Combine single-plan and combo solutions
+    all_solutions = single_plan_solutions + solutions
+
+    # Sort all by ranking_cost (cheapest first)
+    all_solutions.sort(key=lambda x: x["ranking_cost"])
+
+    # Keep only top N
+    all_solutions = all_solutions[:TOP_N_SOLUTIONS]
+
     elapsed = time.perf_counter() - start_time
 
-    if not solutions:
+    if not all_solutions:
         print("\nNo valid solutions found meeting requirements.")
         print("Try increasing MAX_ESIM_ACTIVATIONS or MAX_TOPUPS.")
         logging.info(f"Run completed: No solutions found. Elapsed: {elapsed:.2f}s")
@@ -541,14 +604,15 @@ def main():
 
     print()
     print("=" * 80)
-    print(f"TOP {min(len(solutions), TOP_N_SOLUTIONS)} SOLUTIONS")
+    print(f"TOP {min(len(all_solutions), TOP_N_SOLUTIONS)} SOLUTIONS")
     print("=" * 80)
 
-    for i, s in enumerate(solutions[:TOP_N_SOLUTIONS], 1):
+    for i, s in enumerate(all_solutions[:TOP_N_SOLUTIONS], 1):
+        solution_type = "[SINGLE PLAN]" if s.get("is_single_plan") else "[COMBO]"
         free_tag = f" [{s['free_count']} FREE]" if s["free_count"] > 0 else ""
         accounts_note = f" | {s['total_accounts']} accounts" if s["total_accounts"] > 1 else ""
 
-        print(f"SOLUTION #{i}")
+        print(f"SOLUTION #{i} {solution_type}")
         print("-" * 40)
         print(f"COST: ${s['display_cost']:.2f} USD / ${s['cad']:.2f} CAD{free_tag}")
         print(
@@ -580,7 +644,7 @@ def main():
     print(f"⏱️  Execution time: {elapsed:.2f} seconds")
     print("=" * 80)
 
-    logging.info(f"Run completed: {len(solutions)} solutions. Best: ${solutions[0]['display_cost']:.2f}. Elapsed: {elapsed:.2f}s")
+    logging.info(f"Run completed: {len(all_solutions)} solutions. Best: ${all_solutions[0]['display_cost']:.2f}. Elapsed: {elapsed:.2f}s")
 
 
 if __name__ == "__main__":
