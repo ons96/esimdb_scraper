@@ -293,7 +293,7 @@ def evaluate_combination(combo_data):
         warnings = generate_plan_warnings(p, qty, promo_already_used and has_promo)
         
         data += p["data_mb"] * qty
-        dur = max(dur, p["validity_days"] * qty)
+        dur += p["validity_days"] * qty
         
         # Store actual price paid (for display), not promo price if promo wasn't used
         if regular_price == 0:
