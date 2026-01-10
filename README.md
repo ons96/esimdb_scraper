@@ -112,6 +112,8 @@ python scrape_all_regions_plans.py --region global
 python scrape_all_regions_plans.py --all
 ```
 
+**Note on USA Plans**: The USA scraper filters North America API results for USA-specific plans (≤5 countries). This gives ~1,805 focused plans. The website (esimdb.com/usa) shows ~6,755 plans because it aggregates from all regions including global/multi-continent offerings. For comprehensive coverage, you could aggregate from all regional APIs manually.
+
 ### Manual Steps - Europe
 1.  **Install Dependencies**: `pip install -r requirements.txt` (needs `requests`, `pandas`, `beautifulsoup4`, `lxml`, `tqdm`, `playwright`).
 2.  **Scrape Plans**: `python scrape_europe_plans.py`

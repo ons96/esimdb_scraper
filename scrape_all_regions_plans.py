@@ -157,13 +157,19 @@ def should_include_plan(region: str, plan: dict) -> bool:
     if region != "usa":
         return True
 
-    # USA filtering: include only plans that cover US, and exclude wide-coverage (global-ish) plans.
+    # USA filtering: we intentionally focus on USA-specific / small-coverage plans.
+    # The public API endpoint /api/client/regions/usa/data-plans currently returns 0 plans,
+    # so USA scraping is derived from the north-america endpoint and filtered.
+    #
+    # Note: the website https://esimdb.com/usa may display a much larger plan count
+    # (it appears to aggregate global/multi-region offerings). This scraper keeps the
+    # dataset smaller/more USA-focused for the optimizer.
     coverages = plan.get("coverages", [])
     if USA_COUNTRY_CODE not in coverages:
         return False
-    if len(coverages) > 5:
-        return False
-    return True
+
+    # Exclude very wide coverage (often "global" plans) to keep the USA dataset focused.
+    return len(coverages) <= 5
 
 
 def scrape_region(region: str) -> tuple[pd.DataFrame, list]:
