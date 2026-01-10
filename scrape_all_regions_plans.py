@@ -5,13 +5,13 @@ Regions supported:
 - europe
 - global
 - north-america
-- usa (filtered from north-america; the /regions/usa endpoint exists but currently returns 0 plans)
+- usa (uses country-specific endpoint)
 
 API endpoint findings (tested 2026-01-10):
 - https://esimdb.com/api/client/regions/global/data-plans?locale=en -> 200 with plans
 - https://esimdb.com/api/client/regions/north-america/data-plans?locale=en -> 200 with plans
-- https://esimdb.com/api/client/regions/usa/data-plans?locale=en -> 200 but 0 plans
 - https://esimdb.com/api/client/regions/europe/data-plans?locale=en -> 200 with plans
+- https://esimdb.com/api/client/countries/usa/data-plans?locale=en -> 200 with 6,755 plans from 126 providers
 
 Usage:
   python scrape_all_regions_plans.py --region usa
@@ -40,6 +40,7 @@ USA_COUNTRY_CODE = "US"
 @dataclass(frozen=True)
 class RegionSpec:
     slug: str
+    api_scope: str  # "regions" or "countries"
     api_slug: str
     output_csv: str
     provider_cache_file: str
@@ -49,6 +50,7 @@ class RegionSpec:
 REGION_SPECS: dict[str, RegionSpec] = {
     "europe": RegionSpec(
         slug="europe",
+        api_scope="regions",
         api_slug="europe",
         output_csv="esim_plans_europe.csv",
         provider_cache_file="provider_cache.json",
@@ -56,6 +58,7 @@ REGION_SPECS: dict[str, RegionSpec] = {
     ),
     "global": RegionSpec(
         slug="global",
+        api_scope="regions",
         api_slug="global",
         output_csv="esim_plans_global.csv",
         provider_cache_file="provider_cache_global.json",
@@ -63,16 +66,16 @@ REGION_SPECS: dict[str, RegionSpec] = {
     ),
     "north-america": RegionSpec(
         slug="north-america",
+        api_scope="regions",
         api_slug="north-america",
         output_csv="esim_plans_north_america.csv",
         provider_cache_file="provider_cache_north_america.json",
         raw_json_file="esim_api_north_america_raw.json",
     ),
-    # NOTE: /regions/usa/data-plans exists but returns 0 plans.
-    # We therefore fetch north-america and filter to USA coverage.
     "usa": RegionSpec(
         slug="usa",
-        api_slug="north-america",
+        api_scope="countries",
+        api_slug="usa",
         output_csv="esim_plans_usa.csv",
         provider_cache_file="provider_cache_usa.json",
         raw_json_file="esim_api_usa_raw.json",
@@ -149,34 +152,28 @@ def extract_provider_info(provider_val, provider_cache: dict) -> tuple[str, str]
     return provider_id, provider_name
 
 
-def build_api_url(region_api_slug: str) -> str:
-    return f"https://esimdb.com/api/client/regions/{region_api_slug}/data-plans?locale=en"
+def build_api_url(api_scope: str, api_slug: str) -> str:
+    return f"https://esimdb.com/api/client/{api_scope}/{api_slug}/data-plans?locale=en"
 
 
 def should_include_plan(region: str, plan: dict) -> bool:
     if region != "usa":
         return True
 
-    # USA filtering: we intentionally focus on USA-specific / small-coverage plans.
-    # The public API endpoint /api/client/regions/usa/data-plans currently returns 0 plans,
-    # so USA scraping is derived from the north-america endpoint and filtered.
+    # USA plans are sourced from the country-specific endpoint:
+    #   https://esimdb.com/api/client/countries/usa/data-plans?locale=en
+    # which returns ~6,755 plans from ~126 providers (matching esimdb.com/usa).
     #
-    # Note: the website https://esimdb.com/usa may display a much larger plan count
-    # (it appears to aggregate global/multi-region offerings). This scraper keeps the
-    # dataset smaller/more USA-focused for the optimizer.
-    coverages = plan.get("coverages", [])
-    if USA_COUNTRY_CODE not in coverages:
-        return False
-
-    # Exclude very wide coverage (often "global" plans) to keep the USA dataset focused.
-    return len(coverages) <= 5
+    # Note: many plans returned here may have empty/missing `coverages` fields,
+    # so we avoid filtering by coverages.
+    return True
 
 
 def scrape_region(region: str) -> tuple[pd.DataFrame, list]:
     spec = REGION_SPECS[region]
 
     print(f"Fetching {region} plans from API...")
-    url = build_api_url(spec.api_slug)
+    url = build_api_url(spec.api_scope, spec.api_slug)
 
     headers = {"User-Agent": USER_AGENT}
     resp = requests.get(url, headers=headers, timeout=60)
@@ -328,7 +325,7 @@ def main() -> None:
         spec = REGION_SPECS[region]
         print("\n" + "-" * 80)
         print(f"Region: {region}")
-        print(f"API: {build_api_url(spec.api_slug)}")
+        print(f"API: {build_api_url(spec.api_scope, spec.api_slug)}")
         print(f"Output: {spec.output_csv}")
         print(f"Provider cache: {spec.provider_cache_file}")
         print("-" * 80)

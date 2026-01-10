@@ -10,7 +10,8 @@ from datetime import datetime
 
 # --- CONFIGURATION ---
 TARGET_COUNTRY = "US"  # United States country code
-API_URL = "https://esimdb.com/api/client/regions/north-america/data-plans?locale=en"
+# Country-specific endpoint matches https://esimdb.com/usa counts
+API_URL = "https://esimdb.com/api/client/countries/usa/data-plans?locale=en"
 PROVIDER_CACHE_FILE = "provider_cache_usa.json"
 # ---------------------
 
@@ -87,7 +88,7 @@ def scrape_usa_plans():
     """Fetch and parse eSIM plans from the ESIMDB API"""
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
     
-    print("Fetching North America plans from API (will filter for USA)...")
+    print("Fetching USA plans from API...")
     try:
         resp = requests.get(API_URL, headers=headers, timeout=60)
         resp.raise_for_status()
@@ -97,7 +98,7 @@ def scrape_usa_plans():
         return [], []
 
     all_plans = data.get("plans", [])
-    print(f"Got {len(all_plans)} plans (North America)")
+    print(f"Got {len(all_plans)} plans (USA)")
     
     # Save raw JSON for debugging
     with open("esim_api_usa_raw.json", "w", encoding="utf-8") as f:
@@ -116,16 +117,9 @@ def scrape_usa_plans():
     clean_plans = []
 
     for plan in all_plans:
-        # Filter for USA-only plans or plans that include USA
+        # Country endpoint is already USA-specific; do not filter by `coverages`.
         coverages = plan.get("coverages", [])
-        if TARGET_COUNTRY not in coverages:
-            continue
-        
-        # Also filter out plans that cover too many countries (e.g., global plans)
-        # Focus on USA-specific or North America-specific plans
-        if len(coverages) > 5:  # Exclude global plans
-            continue
-        
+
         # Provider info
         provider_id, provider_name = extract_provider_info(
             plan.get("provider", ""), provider_cache
@@ -217,7 +211,7 @@ def scrape_usa_plans():
 def main():
     print("="*80)
     print("ESIMDB USA SCRAPER")
-    print(f"Target country: {TARGET_COUNTRY} (filtering from North America API)")
+    print(f"Target country: {TARGET_COUNTRY} (using country endpoint)")
     print("="*80)
     
     plans, raw_plans = scrape_usa_plans()
