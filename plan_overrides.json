@@ -24,6 +24,7 @@
             "note": "5% off, one time use"
         }
     },
+    "usa_provider_promo_overrides": {},
     "default_promo_type": "unlimited",
     "default_hassle_penalty": 0.50,
     "comment": "provider_promo_overrides: Set promo_type to 'one-time' for providers with single-use promo codes"

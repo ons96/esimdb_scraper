@@ -8,16 +8,20 @@ env/
 venv/
 .env
 
-# Large data files (regenerate with scrape_europe_plans.py)
+# Large data files (regenerate with scrape_europe_plans.py or scrape_usa_plans.py)
 esim_plans_europe.csv
 esim_plans_europe_filtered.csv
+esim_plans_usa.csv
 esim_api_raw.json
+esim_api_usa_raw.json
 esim_api_full_dump.csv
 esim_api_full_dump.json
 
 # Cache files (regenerate by running scripts)
 provider_cache.json
+provider_cache_usa.json
 promo_recurrence_cache.json
+promo_recurrence_cache_usa.json
 
 # Logs
 *.log
