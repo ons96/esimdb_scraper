@@ -4,6 +4,13 @@
 This project is an **eSIM Plan Optimizer** for European and USA travel. It scrapes data from `esimdb.com`, handles complex provider-specific rules (promo recurrence, new user limits), and uses a combinatorial optimizer to find the cheapest set of eSIM plans to cover a trip's duration and data requirements.
 
 ## Current Status (Jan 10, 2025)
+
+### Multi-Region Support
+- **Unified Scraper (`scrape_all_regions_plans.py`)**: NEW! Scrapes plans for Europe, USA, North America, and Global regions from esimdb.com API.
+- **Interactive Optimizer (`optimize_with_input.py`)**: NEW! User-friendly interface with prompts for region selection, trip days (default: 6), and data needs (default: 5GB).
+- **Multi-Region Optimizer (`optimize_esim_plans_multi_region.py`)**: Unified optimizer supporting both Europe and USA regions via `--region` flag.
+- **Unified Runner (`run_full_optimizer_multi_region.py`)**: One-click pipeline for either region.
+
 ### Europe Region
 - **Scraper (`scrape_europe_plans.py`)**: Functional. Fetches plans from API.
 - **Promo Scraper (`scrape_promo_recurrence.py`)**: Functional & Optimized. Uses BeautifulSoup to detect "One-time" vs "Unlimited" badges on provider pages. Multithreaded. Caches results to `promo_recurrence_cache.json`.
@@ -17,8 +24,6 @@ This project is an **eSIM Plan Optimizer** for European and USA travel. It scrap
 ### USA Region
 - **Scraper (`scrape_usa_plans.py`)**: Functional. Fetches USA plans from North America API and filters for USA-only coverage.
 - **Promo Scraper (`scrape_usa_promo_recurrence.py`)**: Functional. Scrapes USA provider pages for promo recurrence info. Caches to `promo_recurrence_cache_usa.json`.
-- **Multi-Region Optimizer (`optimize_esim_plans_multi_region.py`)**: Unified optimizer supporting both Europe and USA regions.
-- **Unified Runner (`run_full_optimizer_multi_region.py`)**: One-click pipeline for either region.
 
 ## File Structure
 ### Europe-Specific Files
@@ -45,6 +50,33 @@ This project is an **eSIM Plan Optimizer** for European and USA travel. It scrap
 
 ## Setup & Usage
 
+### Quick Start - Interactive Mode (NEW!)
+
+For the easiest experience, use the **interactive optimizer** that prompts you for region, trip duration, and data needs:
+
+```bash
+python optimize_with_input.py
+```
+
+Example session:
+```
+Select region:
+1. Europe
+2. USA
+3. North America
+4. Global
+Enter choice (1-4, default: 1): 2
+
+Enter trip duration in days (default: 6): 10
+Enter data requirement in GB (default: 5): 8
+
+✓ Region:      USA
+✓ Trip:        10 days
+✓ Data:        8.0 GB
+```
+
+Just press **Enter** to use defaults (6 days, 5GB).
+
 ### Quick Start - Multi-Region
 
 **Europe:**
@@ -65,6 +97,23 @@ python run_full_optimizer_multi_region.py --region usa
 python run_full_optimizer_multi_region.py --region usa --trip-days 7 --data-gb 3
 ```
 
+### Unified Scraper - All Regions
+
+To scrape plans from all supported regions (Europe, USA, North America, Global):
+
+```bash
+# Scrape a specific region
+python scrape_all_regions_plans.py --region europe
+python scrape_all_regions_plans.py --region usa
+python scrape_all_regions_plans.py --region north-america
+python scrape_all_regions_plans.py --region global
+
+# Scrape all regions at once
+python scrape_all_regions_plans.py --all
+```
+
+**Note on USA Plans**: `scrape_all_regions_plans.py --region usa` uses the country endpoint `https://esimdb.com/api/client/countries/usa/data-plans?locale=en` and currently returns **~6,755 plans from ~126 providers** (matching https://esimdb.com/usa).
+
 ### Manual Steps - Europe
 1.  **Install Dependencies**: `pip install -r requirements.txt` (needs `requests`, `pandas`, `beautifulsoup4`, `lxml`, `tqdm`, `playwright`).
 2.  **Scrape Plans**: `python scrape_europe_plans.py`
@@ -73,7 +122,7 @@ python run_full_optimizer_multi_region.py --region usa --trip-days 7 --data-gb 3
 
 ### Manual Steps - USA
 1.  **Install Dependencies**: Same as above.
-2.  **Scrape Plans**: `python scrape_usa_plans.py`
+2.  **Scrape Plans**: `python scrape_all_regions_plans.py --region usa`
 3.  **Scrape Promo Rules**: `python scrape_usa_promo_recurrence.py` (updates cache).
 4.  **Run Optimizer**: `python optimize_esim_plans_multi_region.py --region usa --trip-days 10 --data-gb 5`
 
